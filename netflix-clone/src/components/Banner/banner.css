@@ -1,0 +1,116 @@
+/* Container for the entire banner */
+.banner {
+  color: white;
+  height: 448px;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Container for the content inside the banner */
+.banner__contents {
+  margin-left: 30px;
+  padding-top: 140px;
+  height: 190px;
+}
+
+/* Title of the movie/TV show */
+.banner__title {
+  font-size: 3rem;
+  font-weight: 800;
+  padding-bottom: 0.3rem;
+}
+
+/* Container for the action buttons */
+.banner__buttons {
+  display: flex;
+  gap: 10px; /* Adds space between buttons */
+  margin-top: 1rem; /* Adds space between title and buttons */
+}
+
+/* Styling for each button */
+.banner__button {
+  cursor: pointer;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
+  font-family: "Arial", sans-serif; /* Changes font to Arial */
+  font-size: 1rem; /* Adjusts font size */
+}
+
+/* Create a pseudo-element for the wide highlight effect */
+.banner__button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+/* Hover effect for buttons */
+.banner__button:hover {
+  color: #000;
+  background-color: #e6e6e6;
+}
+
+.banner__button:hover::before {
+  transform: scaleX(1);
+  transition: transform 0.3s;
+}
+
+/* Description text for the movie/TV show */
+.banner__description {
+  width: 45rem;
+  line-height: 1.3;
+  padding-top: 1rem;
+  font-size: 1.1rem;
+  max-width: 360px;
+  height: 80px;
+}
+
+/* Bottom fade effect for the banner */
+.banner--fadeBottom {
+  height: 7.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .banner__title {
+    font-size: 2rem;
+  }
+
+  .banner__description {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .banner__button {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
