@@ -1,18 +1,27 @@
 .row {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.row h1 {
   margin-left: 20px;
   color: white;
+  z-index: 2;
+}
+
+.row_container {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .row_posters {
   display: flex;
-  overflow-y: hidden;
   overflow-x: scroll;
+  overflow-y: hidden;
   padding: 20px;
-  width: calc(100vw - 40px);
-}
-
-.row_posters::-webkit-scrollbar {
-  display: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 .row_poster {
@@ -20,6 +29,7 @@
   object-fit: contain;
   margin-right: 10px;
   transition: transform 450ms;
+  cursor: pointer;
 }
 
 .row_poster:hover {
@@ -27,5 +37,30 @@
 }
 
 .row_posterLarge {
-  max-height: 250px;
+  max-height: 200px;
+}
+
+.row_arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
+  color: white;
+  display: none; /* Hide arrows by default */
+}
+
+.row_arrow.left {
+  left: 10px;
+}
+
+.row_arrow.right {
+  right: 10px;
+}
+
+.row_container:hover .row_arrow {
+  display: block; /* Show arrows on hover */
 }

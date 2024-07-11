@@ -1,10 +1,11 @@
 import React from "react";
-import "../Header/header.css";
-import Netflix_logo from "../../assets/images/Netflix_logo.png";
+import "./header.css"; // Adjusted the import path to be relative
+import Netflix_logo from "/Users/makedaleikun/Desktop/Evangadi_Booth camp_Study/Phase4/Netflix_clone2024/netflix-clone/src/assets/images/Netflix_log.jpg";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationNoneIcon from "@mui/icons-material/NotificationsNone";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+
 const Header = () => {
   return (
     <div className="header_outer_container">
@@ -12,15 +13,17 @@ const Header = () => {
         <div className="header_left">
           <ul>
             <li>
-              <li>
-                <img src={Netflix_logo} alt="Netflix Logo" width="100" />
-              </li>
+              <img
+                src={Netflix_logo}
+                alt="Netflix Logo"
+                className="netflix_logo"
+              />
             </li>
             <li>Home</li>
-            <li>TVShows</li>
+            <li>TV Shows</li>
             <li>Movies</li>
             <li>Latest</li>
-            <li>Mylist</li>
+            <li>My List</li>
             <li>Browse by Languages</li>
           </ul>
         </div>

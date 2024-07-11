@@ -1,28 +1,28 @@
+/* header.css */
+
 .header_outer_container {
   position: sticky;
   top: 0;
   display: flex;
   justify-content: center;
+  align-items: center; /* Ensure items are centered vertically */
   height: 10vh;
   background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
   transition: all 0.5s ease-in;
   z-index: 1;
 }
 
-.nav_black {
-  background-color: rgb(20, 20, 20);
-}
-
 .header_container {
   width: 90%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; /* Ensure items are centered vertically */
 }
 
 .header_left,
 .header_right {
   display: flex;
+  align-items: center; /* Ensure items are centered vertically */
 }
 
 .header_left ul,
@@ -31,6 +31,7 @@
   list-style-type: none; /* Removes bullet points */
   padding: 0; /* Removes default padding */
   margin: 0; /* Removes default margin */
+  align-items: center; /* Ensure items are centered vertically */
 }
 
 .header_left ul li,
@@ -43,4 +44,10 @@
 .header_left ul li:last-child,
 .header_right ul li:last-child {
   margin-right: 0; /* Removes the right margin from the last item */
+}
+
+.netflix_logo {
+  max-height: 50px;
+  width: auto;
+  vertical-align: middle; /* Ensure logo is aligned with text */
 }

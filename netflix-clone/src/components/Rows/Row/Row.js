@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./row.css";
-import axios from "../../../Utils/axios"; // Import axios from correct path
+import axios from "../../../Utils/axios";
 import movieTrailer from "movie-trailer";
 import Youtube from "react-youtube";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
+  const rowRef = useRef(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,25 +53,48 @@ function Row({ title, fetchUrl, isLargeRow }) {
     },
   };
 
+  const scroll = (direction) => {
+    setIsScrolled(true);
+    if (rowRef.current) {
+      const scrollAmount = rowRef.current.clientWidth;
+      rowRef.current.scrollLeft +=
+        direction === "left" ? -scrollAmount : scrollAmount;
+    }
+  };
+
   return (
     <div className="row">
       <h1>{title}</h1>
-      <div className="row_posters">
-        {movies?.map((movie, index) => (
-          <img
-            key={index}
-            onClick={() => handleClick(movie)}
-            src={`${base_url}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name}
-            className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+      <div className="row_container">
+        {isScrolled && (
+          <ArrowBackIosIcon
+            className="row_arrow left"
+            onClick={() => scroll("left")}
           />
-        ))}
+        )}
+        <div className="row_posters" ref={rowRef}>
+          {movies?.map((movie, index) => (
+            <img
+              key={index}
+              onClick={() => handleClick(movie)}
+              src={`${base_url}${
+                isLargeRow ? movie.poster_path : movie.backdrop_path
+              }`}
+              alt={movie.name}
+              className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+            />
+          ))}
+        </div>
+        <ArrowForwardIosIcon
+          className="row_arrow right"
+          onClick={() => scroll("right")}
+        />
       </div>
-      <div style={{ padding: 40 }}>
-        {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
-      </div>
+      {trailerUrl && (
+        <div style={{ padding: 0 }}>
+          <Youtube videoId={trailerUrl} opts={opts} />
+        </div>
+      )}
     </div>
   );
 }
