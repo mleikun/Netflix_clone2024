@@ -2,12 +2,9 @@
   background-color: #333;
   padding: 20px;
   color: #fff;
-  display: flex;
-  justify-content: center;
 }
 
 .footer_inner_container {
-  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -50,16 +47,15 @@
 }
 
 .service_code_input {
-  width: 100px;
+  width: 100px; /* Set a specific width */
   padding: 5px;
   margin-top: 5px;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
 .footer_copy_right {
   width: 100%;
   font-size: 14px;
-  text-align: center;
 }
 
 .footer_copy_right p {
